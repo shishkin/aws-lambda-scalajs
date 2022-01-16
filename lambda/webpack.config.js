@@ -1,4 +1,6 @@
+const { ESBuildMinifyPlugin } = require('esbuild-loader')
 const config = require('./scalajs.webpack.config');
+
 config.mode = "production";
 config.output.libraryTarget = 'commonjs2';
 config.target = 'node';
@@ -7,9 +9,16 @@ config.module = {
     test: /\.js$/,
     loader: 'esbuild-loader',
     options: {
-      loader: 'jsx',  // Remove this if you're not using JSX
-      target: 'es2015'  // Syntax to compile to (see options below for possible values)
+      target: 'es2020'
     }
   }]
 };
+config.optimization = {
+  minimizer: [
+    new ESBuildMinifyPlugin({
+      target: 'es2020'
+    })
+  ]
+};
+
 module.exports = config;

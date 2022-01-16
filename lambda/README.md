@@ -3,7 +3,13 @@
 ## Build
 
 ```shell
-sbt lambda/fastOptJS::webpack
+sbt lambda/fastOptJS/webpack
+```
+
+## Package
+
+```shell
+sbt lambda/Universal/packageBin
 ```
 
 ## Run Locally

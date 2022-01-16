@@ -40,6 +40,7 @@ lazy val lambda = project
     // Compile / npmDependencies ++= Seq("aws-sdk" -> awsSdkVersion),
     Compile / npmDevDependencies ++= Seq("esbuild-loader" -> "2.18.0"),
     topLevelDirectory := None,
+    maintainer := "None",
     Universal / mappings ++= (Compile / fullOptJS / webpack).value.map { f =>
       // remove the bundler suffix from the file names
       f.data -> f.data.getName.replace("-opt-bundle", "")
