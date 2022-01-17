@@ -1,15 +1,16 @@
-import net.exoego.facade.aws_lambda._
+import net.exoego.facade.aws_lambda.*
 
 import scala.concurrent.Future
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
-import scala.scalajs.js.JSConverters._
+import scala.scalajs.js.JSConverters.*
 import scala.scalajs.js.Promise
-import scala.scalajs.js.annotation.JSExportTopLevel
+import scala.scalajs.js.annotation.*
 
-object Handler {
-  @JSExportTopLevel(name = "handler")
-  def handleRequest(
+object HelloLambda {
+
+  @JSExportTopLevel(moduleID = "hello", name = "handler")
+  def handler(
       request: APIGatewayProxyEventV2,
       context: Context
   ): Promise[APIGatewayProxyResult] = {
