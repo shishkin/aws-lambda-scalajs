@@ -1,15 +1,15 @@
-ThisBuild / scalaVersion := "2.13.8"
+val scala3 = "3.1.0"
+
+ThisBuild / scalaVersion := scala3
 
 lazy val commonSettings = Seq(
-  scalaVersion := "2.13.8",
+  scalaVersion := scala3,
   scalacOptions ++= Seq(
     "-deprecation",
-    "-encoding", "UTF-8",
-    "-explaintypes",
+    "-encoding",
+    "UTF-8",
     "-feature",
-    "-unchecked",
-    "-Ywarn-unused",
-    "-Xlint",
+    "-unchecked"
   )
 )
 
@@ -17,7 +17,7 @@ lazy val hello = project
   .enablePlugins(ScalaJSPlugin)
   .settings(
     commonSettings,
-    scalaJSUseMainModuleInitializer := true,
+    scalaJSUseMainModuleInitializer := true
   )
 
 val awsSdkVersion = "2.892.0"
@@ -34,10 +34,13 @@ lazy val lambda = project
       _.withSourceMap(false)
     },
     libraryDependencies ++= Seq(
-      "net.exoego" %%% "scala-js-nodejs-v14" % "0.14.0",
-      "net.exoego" %%% "aws-lambda-scalajs-facade" % "0.11.0",
-      "net.exoego" %%% "aws-sdk-scalajs-facade-dynamodb" % awsSdkScalajsFacadeVersion,
-      "org.scalameta" %%% "munit" % "1.0.0-M1" % Test,
+      ("net.exoego" %%% "scala-js-nodejs-v14" % "0.14.0")
+        .cross(CrossVersion.for3Use2_13),
+      ("net.exoego" %%% "aws-lambda-scalajs-facade" % "0.11.0")
+        .cross(CrossVersion.for3Use2_13),
+      ("net.exoego" %%% "aws-sdk-scalajs-facade-dynamodb" % awsSdkScalajsFacadeVersion)
+        .cross(CrossVersion.for3Use2_13),
+      "org.scalameta" %%% "munit" % "1.0.0-M1" % Test
     ),
     // aws-sdk is already provided on AWS
     // Compile / npmDependencies ++= Seq("aws-sdk" -> awsSdkVersion),

@@ -9,8 +9,13 @@ import scala.scalajs.js.annotation.JSExportTopLevel
 
 object Handler {
   @JSExportTopLevel(name = "handler")
-  def handleRequest(request: APIGatewayProxyEventV2, context: Context): Promise[APIGatewayProxyResult] = {
+  def handleRequest(
+      request: APIGatewayProxyEventV2,
+      context: Context
+  ): Promise[APIGatewayProxyResult] = {
     println(js.JSON.stringify(request))
-    Future(APIGatewayProxyResult(body = s"hello ${request.body}", statusCode = 200)).toJSPromise
+    Future(
+      APIGatewayProxyResult(body = s"hello ${request.body}", statusCode = 200)
+    ).toJSPromise
   }
 }
