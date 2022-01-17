@@ -3,3 +3,4 @@ project/project/
 .metals/
 .bloop/
 .bsp/
+cdk.out/

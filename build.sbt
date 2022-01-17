@@ -30,7 +30,9 @@ lazy val lambda = project
     useYarn := true,
     webpack / version := "4.46.0",
     webpackConfigFile := Some(baseDirectory.value / "webpack.config.js"),
-    scalaJSLinkerConfig ~= { _.withSourceMap(false) },
+    scalaJSLinkerConfig ~= {
+      _.withSourceMap(false)
+    },
     libraryDependencies ++= Seq(
       "net.exoego" %%% "scala-js-nodejs-v14" % "0.14.0",
       "net.exoego" %%% "aws-lambda-scalajs-facade" % "0.11.0",
@@ -47,3 +49,11 @@ lazy val lambda = project
     }
   )
 
+lazy val cdk = project
+  .enablePlugins()
+  .settings(
+    commonSettings,
+    libraryDependencies ++= Seq(
+      "io.burkard" %% "aws-cdk-scala" % "0.9.1"
+    )
+  )
