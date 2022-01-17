@@ -36,7 +36,8 @@ lazy val lambda = project
     libraryDependencies ++= Seq(
       "net.exoego" %%% "scala-js-nodejs-v14" % "0.14.0",
       "net.exoego" %%% "aws-lambda-scalajs-facade" % "0.11.0",
-      "net.exoego" %%% "aws-sdk-scalajs-facade-dynamodb" % awsSdkScalajsFacadeVersion
+      "net.exoego" %%% "aws-sdk-scalajs-facade-dynamodb" % awsSdkScalajsFacadeVersion,
+      "org.scalameta" %%% "munit" % "1.0.0-M1" % Test,
     ),
     // aws-sdk is already provided on AWS
     // Compile / npmDependencies ++= Seq("aws-sdk" -> awsSdkVersion),
